@@ -226,11 +226,11 @@ def spectral_clustering():
     # Plot of the eigenvalues (smallest to largest) as a line plot for all datasets
     plt.figure(figsize=(8, 6))
     
-    #for i, group_info in plots_values.items():
-    #    plot_eig = plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
+    for i, group_info in plots_values.items():
+        plot_eig = plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
     
     plt.title('Eigenvalues Plot')
-    plot_eig = plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
+    #plot_eig = plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
     #plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
     plt.xlabel('Eigenvalue Index')
     plt.ylabel('Eigenvalue')
