@@ -276,7 +276,7 @@ def jarvis_patrick_clustering():
     plt.xlabel('k')
     plt.ylabel('smin')
     plt.colorbar()
-    plt.savefig('Q2_Plot1.png')
+    plt.savefig('JarvisPatrick_Highest ARI.png')
     plt.close()
 
     plt.scatter(k_values, smin_values, c=sses, cmap='viridis', s=25)
@@ -284,7 +284,7 @@ def jarvis_patrick_clustering():
     plt.xlabel('k')
     plt.ylabel('smin')
     plt.colorbar()
-    plt.savefig('Q2_Plot2.png')
+    plt.savefig('JarvisPatrick_Smallest SSE.png')
     plt.close()
 
 
@@ -299,7 +299,7 @@ def jarvis_patrick_clustering():
     plt.title('Clusters with Largest ARI')
     plt.xlabel('Feature 1')
     plt.ylabel('Feature 2')
-    plt.savefig('Q2_Plot3.png')
+    plt.savefig('JarvisPatrick_PlotARI.png')
     plt.close()
     answers["cluster scatterplot with largest ARI"] = plot_ARI
     
@@ -307,7 +307,7 @@ def jarvis_patrick_clustering():
     plt.title('Clusters with Smallest SSE')
     plt.xlabel('Feature 1')
     plt.ylabel('Feature 2')
-    plt.savefig('Q3_Plot4.png')
+    plt.savefig('JarvisPatrick_PlotSSE.png')
     plt.close()
     answers["cluster scatterplot with smallest SSE"] = plot_SSE
 
