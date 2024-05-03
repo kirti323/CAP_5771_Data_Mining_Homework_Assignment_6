@@ -17,18 +17,6 @@ from typing import Tuple,Optional
 ######################################################################
 
 
-
-
-def plot_clustering(data, labels, title):
-    plt.figure(figsize=(8, 6))
-    plt.scatter(data[:, 0], data[:, 1], c=labels, cmap='viridis', s=10)
-    plt.title(title)
-    plt.xlabel('Feature 1')
-    plt.ylabel('Feature 2')
-    plt.colorbar(label='Cluster')
-    plt.grid(True)
-    plt.show()
-
 def proximity_measure(x, y, sigma):
 
     dist_squared = np.sum((x - y) ** 2)
@@ -174,30 +162,7 @@ def spectral_clustering():
     labels_subset = cluster_labels[:1000]
     
     sigmas, ari_scores, sse_scores = spectral_hyperparameter_study(data_subset, labels_subset)
-    
-    
-    
-    # Plot ARI scores against sigma values
-    plt.figure(figsize=(8, 6))
-    plt.plot(sigmas, ari_scores, color='b')
-    plt.title('ARI vs Sigma')
-    plt.xlabel('Sigma')
-    plt.ylabel('ARI')
-    plt.grid(True)
-    plt.xscale('log') 
-    plt.savefig('Plot_1.png')
-    plt.close()
-    
-    # Plot SSE scores against sigma values
-    plt.figure(figsize=(8, 6))
-    plt.plot(sigmas, sse_scores, color='r')
-    plt.title('SSE vs Sigma')
-    plt.xlabel('Sigma')
-    plt.ylabel('SSE')
-    plt.grid(True)
-    plt.xscale('log') 
-    plt.savefig('Plot_2.png')
-    plt.close()
+
     
     
     # After hyperparameter study
@@ -226,13 +191,13 @@ def spectral_clustering():
     plot_ARI = plt.scatter(cluster_data[best_dataset_index * 1000: (best_dataset_index + 1) * 1000, 0], 
                 cluster_data[best_dataset_index * 1000: (best_dataset_index + 1) * 1000, 1], 
                 c=plots_values[best_dataset_index]["computed_labels"], cmap='viridis')
-    plt.title(f'Clustering for highest ARI for:{best_k}')
+    plt.title(f'Clustering for highest ARI')
     
     plt.xlabel('Feature 1')
     plt.ylabel('Feature 2')
     plt.colorbar(label='Cluster')
     plt.grid(True)
-    plt.savefig('Plot_3.png')
+    plt.savefig('Spectral CLustering_HighestCluster.png')
     plt.close()
     
     # Find the dataset with the lowest SSE
@@ -248,29 +213,29 @@ def spectral_clustering():
     plot_SSE = plt.scatter(cluster_data[best_dataset_index_sse * 1000: (best_dataset_index_sse + 1) * 1000, 0], 
                 cluster_data[best_dataset_index_sse * 1000: (best_dataset_index_sse + 1) * 1000, 1], 
                 c=plots_values[best_dataset_index_sse]["computed_labels"], cmap='viridis')
-    plt.title(f'Clustering for lowest SSE with k :{best_k}')
+    plt.title(f'Clustering for lowest SSE')
     
     plt.xlabel('Feature 1')
     plt.ylabel('Feature 2')
     plt.colorbar(label='Cluster')
     plt.grid(True)
-    plt.savefig('Plot_4.png') 
+    plt.savefig('Spectral Clustering_Lowest SSE.png') 
     plt.close()
     
     
     # Plot of the eigenvalues (smallest to largest) as a line plot for all datasets
     plt.figure(figsize=(8, 6))
     
-    for i, group_info in plots_values.items():
-        plot_eig = plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
+    #for i, group_info in plots_values.items():
+    #    plot_eig = plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
     
     plt.title('Eigenvalues Plot')
-    #plot_eig = plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
+    plot_eig = plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
     #plt.plot(np.sort(group_info["eig_values"]), label=f'Dataset {i+1}')
     plt.xlabel('Eigenvalue Index')
     plt.ylabel('Eigenvalue')
     plt.grid(True)
-    plt.savefig('Plot_5_EV.png') 
+    plt.savefig('Spectral Clustering_EigenValues.png') 
     plt.close()
     
  
