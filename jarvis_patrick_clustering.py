@@ -1,4 +1,3 @@
-
 """
 Work with Jarvis-Patrick clustering.
 Do not use global variables!
